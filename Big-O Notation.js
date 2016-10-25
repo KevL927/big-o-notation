@@ -1,3 +1,27 @@
+// findNthElement halves the size of the array at each step, so it's a classic
+// example of an O(log n) algorithm.
+//
+// findElements calls findNthElement, so its complexity must be at best O(log n);
+// we can generally assume that toFind will be smaller than array (you won't be
+// asking for duplicate elements with this), so it gets dropped from the Big O,
+// and we describe findElements as O(log n).
+//
+// isOdd does one floating-point division and one comparison, no matter what
+// number is provided. It's O(1), constant time.
+//
+// triangleNumbers is about as ridiculous as the dumb Fibonacci algorithm that
+// floats around in most examples of recursion. It's O(stupid) and you don't
+// really need anything more than that. Tip: Don't call this with any number
+// greater than about 20 unless you're prepared to wait for a while.
+//
+// sampleAutocorrelationMatrix goes through the array twice, in nested loops,
+// so it takes time and memory according to the size of the result matrix -
+// that is, O(n^2) in the size of the original vector.
+//
+// doubleArray steps through the array linearly, in linear time. O(n).
+
+//----------------------------------------------------------------------
+
 //O(log(n)) Logarithmic time - When running findNthElement alone: When we double the elements of an array, the best case went up by 1 and worse case by 2;
 
 // Finds the nth element in an array
@@ -107,3 +131,34 @@ var triangleNumbers = function(n) {
     }
     return triangleNumbers(n - 1) + triangleNumbers(n - 1) - triangleNumbers(n - 2) + 1;
 };
+
+//-----------------------------------------------------------------------
+
+// Calculates the nth triangle number
+// This one's a challenge! :)
+var counter = 0;
+var triangleNumbers = function(n) {
+	counter++;
+    if (n === 0 || n === 1) {
+        return n;
+    }
+    return triangleNumbers(n - 1) + triangleNumbers(n - 1) - triangleNumbers(n - 2) + 1;
+};
+
+
+// Test factorial time, add c2*1 in the for loop
+var c2 = 1;
+for(var i = 1; i < 10; i++, c2*i) {
+	counter = 0;
+	triangleNumbers(i);
+	console.log('exponential base 2.406: ' + Math.pow(2.35, i));
+	console.log('with i = ' + i + ': ' + counter);
+}
+
+// Test linear time.
+for(var i = 1; i < 10; i++) {
+	counter = 0;
+	triangleNumbers(i);
+	console.log('exponential base 2: ' + Math.pow(2, i));
+	console.log('with i = ' + i + ': ' + counter);
+}
