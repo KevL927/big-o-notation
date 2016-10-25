@@ -22,7 +22,7 @@ var findNthElement = function(array, n) {
 
 
 
-// O(log(n)) - Logarithmic time - The for-loop inside findElement runs as much as the length of the input toFind array (If the length of the toFind array is 2, then the for-loop runs twice).
+//  O(n) - Linear time and O(log(n)) - Logarithmic time - The for-loop inside findElement runs as much as the length of the input toFind array (If the length of the toFind array is 2, then the for-loop runs twice).
 // Depending on the length of the toFind array, the findNthElement function run increments as much as the length of the toFind array.
 // ex: array.length = 10; toFind.length = 1; findNthElement = 5;
 // ex: array.length = 20; toFind.length = 1; findNthElement = 6;
